@@ -1,9 +1,9 @@
 Name	        Best Case  	Average Case  	Worst Case 	Memory	Stable   	Method Used
-Quick Sort	    n log n	    n log n	        n^{2}	    log n	No	        Partitioning
-Merge Sort	    n log n	    n log n	        n log n	    n	    Yes	        Merging
-Insertion Sort	n	        n^{2}	        n^{2}	    1	    Yes	        Insertion
-Bubble Sort	    n	        n^{2}	        n^{2}	    1	    Yes	        Exchanging
-Selection Sort	n^{2}	    n^{2}	        n^{2}	    1	    No	        Selection
+Quick Sort	    n log n	    n log n	        n^{2}	    log n	  No	      Partitioning
+Merge Sort	    n log n	    n log n	        n log n	    n	    Yes	      Merging
+Insertion Sort	n	          n^{2}	          n^{2}	      1	    Yes	      Insertion
+Bubble Sort	    n	          n^{2}	          n^{2}	      1	    Yes	      Exchanging
+Selection Sort	n^{2}	      n^{2}	          n^{2}	      1	    No	      Selection
 
 
 from geeks for geeks: https://www.geeksforgeeks.org/sorting-algorithms/
