@@ -11,11 +11,14 @@ def search(arr, val):
         return False
 
     elif len(arr) == 1:
-        if arr[0] == val:
+        if arr[0] == val:  # check if item in the array is val
             return True
         return False
 
     mid = len(arr) // 2
+
+    if arr[mid] == val:  # check if item in the middle of array is val
+        return True
 
     return search(arr[:mid], val) or search(arr[mid:], val)
 

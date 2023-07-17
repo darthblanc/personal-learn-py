@@ -1,0 +1,3 @@
+Name	            Best Case  	Worst Case
+Linear Search	    1	        n
+Binary Search	    1	    log n
