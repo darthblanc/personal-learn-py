@@ -1,12 +1,12 @@
+# array -> sorted array
 def sort(arr):
-    if len(arr) == 0:
-        return []
-    elif len(arr) == 1:
+    # if the length of the array is < 2 no sorting is required
+    if len(arr) < 2:
         return arr
 
-    greater = []
-    equal = []
-    lesser = []
+    greater = []  # collects all items > pivot
+    equal = []  # collects all items == pivot
+    lesser = []  # collects all items < pivot
     pivot = arr[0]
 
     for item in arr:
@@ -17,7 +17,7 @@ def sort(arr):
         else:
             equal.append(item)
 
-    return sort(lesser) + equal + sort(greater)
+    return sort(lesser) + equal + sort(greater)  # create sorted list from already sorted cases
 
 
 print(sort([1, 2, 3, 4, 5, 6, 7]))

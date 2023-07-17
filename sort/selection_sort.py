@@ -1,24 +1,26 @@
 import sys
 
 
+# array -> sorted array
 def sort(arr):
-    if len(arr) == 0:
-        return []
-    elif len(arr) == 1:
+    # if the length of the array is < 2 no sorting is required
+    if len(arr) < 2:
         return arr
 
     i = 0
 
-    while len(arr[i:]) != 0:
-        minimum = sys.maxsize
+    while len(arr[i:]) != 0:  # continue until size of unsorted partition is 0
+        minimum = sys.maxsize  # biggest int in python
         min_index = len(arr)
         for j in range(i, len(arr)):
-            if arr[j] < minimum:
+            if arr[j] < minimum:  # find the smallest number in unsorted partition
                 minimum = arr[j]
                 min_index = j
+        # switch first element in unsorted partition with the smallest number in the partition
         temp = arr[i]
         arr[i] = minimum
         arr[min_index] = temp
+        # reduce the size of the sorted partition
         i += 1
 
     return arr

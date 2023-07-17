@@ -1,3 +1,4 @@
+# array -> boolean
 def not_monotonic(arr):
     for i in range(1, len(arr)):
         if arr[i - 1] > arr[i]:
@@ -6,14 +7,15 @@ def not_monotonic(arr):
     return False
 
 
+# array -> sorted array
 def sort(arr):
-    if len(arr) == 0:
-        return []
-    elif len(arr) == 1:
+    # if the length of the array is < 2 no sorting is required
+    if len(arr) < 2:
         return arr
 
-    while not_monotonic(arr):
+    while not_monotonic(arr):  # continue until array is monotonic increasing
         for i in range(1, len(arr)):
+            # swap items in list
             if arr[i - 1] > arr[i]:
                 temp = arr[i - 1]
                 arr[i - 1] = arr[i]

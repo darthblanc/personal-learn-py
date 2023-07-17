@@ -1,3 +1,4 @@
+# array, array -> sorted array
 def merge(left, right):
     for i in range(len(right)):
         for j in range(len(left)):
@@ -13,19 +14,20 @@ def merge(left, right):
     return left
 
 
+# array -> sorted array
 def sort(arr):
-    if len(arr) == 0:
-        return []
-    elif len(arr) == 1:
+    # if the length of the array is < 2 no sorting is required
+    if len(arr) < 2:
         return arr
+
     elif len(arr) == 2:
-        if arr[0] > arr[1]:
+        if arr[0] > arr[1]:  # if not sorted, switch items
             return [arr[1], arr[0]]
         return arr
 
-    mid = len(arr) // 2
+    mid = len(arr) // 2  # find midpoint of array [should be an integer]
 
-    return merge(sort(arr[:mid]), sort(arr[mid:]))
+    return merge(sort(arr[:mid]), sort(arr[mid:]))  # apply merge on sorted partitions
 
 
 print(sort([1, 2, 3, 4, 5, 6, 7]))
