@@ -31,16 +31,31 @@ class Graph:
         distance = 1
         q = [start]
         visited = set()
+        parent = {q[0]: {}}
+
         while q[0] != end:
             if visited.__contains__(q[0]):
                 q.pop(0)
                 continue
             visited.add(q[0])
             for edge in self.graph[q[0]]:
+                if q.__contains__(edge):
+                    continue
                 q.append(edge)
+                parent[edge] = {q[0]: parent[q[0]]}
             distance += 1
             q.pop(0)
-        return True, distance
+        return True, distance // 2, self.write_path(parent[end], end)
+
+    def write_path(self, branch, end):
+        path = f"{end} -> "
+
+        while len(branch) != 0:
+            for k in branch.keys():
+                path += f"{k} -> "
+                branch = branch[k]
+
+        return path[:-4]
 
     def __str__(self):
         string_format = "{"
@@ -67,13 +82,13 @@ if __name__ == '__main__':
     g.addEdge(3, 3)
     g.addEdge(2, 5)
     g.addEdge(3, 7)
-    print(g.numVertices())
-    # print(g.numEdges())
+    # print(g.numVertices())
+    # # print(g.numEdges())
     print(g)
-    found, distance = g.BFS(1, 3)
-    print(found, distance // 2)
+    # found, distance, path = g.BFS(0, 1)
+    print(g.BFS(1, 5))
 
-# This code is contributed by Neelam Yadav
+# Got nodes from Neelam Yadav on geeksforgeeks
 # build a function to print the bfs path
 # count the num of edges
 # build a function to find dfs
