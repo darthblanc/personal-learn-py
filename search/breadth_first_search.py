@@ -45,6 +45,7 @@ class Graph:
                 parent[edge] = {q[0]: parent[q[0]]}
             distance += 1
             q.pop(0)
+
         return True, distance // 2, self.write_path(parent[end], end)
 
     def write_path(self, branch, end):
@@ -71,22 +72,15 @@ class Graph:
 
 # Driver code
 if __name__ == '__main__':
-    # Create a graph given in
-    # the above diagram
-    g = Graph()
-    g.addEdge(0, 1)
-    g.addEdge(0, 2)
-    g.addEdge(1, 2)
-    g.addEdge(2, 0)
-    g.addEdge(2, 3)
-    g.addEdge(3, 3)
-    g.addEdge(2, 5)
-    g.addEdge(3, 7)
-    # print(g.numVertices())
-    # # print(g.numEdges())
-    print(g)
-    # found, distance, path = g.BFS(0, 1)
-    print(g.BFS(1, 5))
+    my_graph = Graph()
+
+    my_graph.addEdge("E", "Surname")
+    my_graph.addEdge("F", "Firstname")
+    my_graph.addEdge("C", "Initial")
+    my_graph.addEdge("Person", "E")
+    # my_graph.addEdge("C", "Person")
+
+    print(my_graph.BFS("E", "C"))
 
 # Got nodes from Neelam Yadav on geeksforgeeks
 # build a function to print the bfs path
