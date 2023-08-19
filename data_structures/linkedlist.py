@@ -35,12 +35,23 @@ class ListNode(object):
         rv = ListNode(0)
         rv.next = self
         node = rv
-        print(rv)
         while node.next is not None:
             if node.next.val == entry:
                 node.next = node.next.next
             else:
                 node = node.next
+
+    def __contains__(self, item):
+        rv = ListNode(0)
+        rv.next = self
+        node = rv
+        while node.next is not None:
+            if node.next.val == item:
+                return True
+            else:
+                node = node.next
+
+        return False
 
     def __str__(self):
         return f"{self.val} -> {self.next}"
@@ -58,7 +69,8 @@ if __name__ == '__main__':
     l1.addLast(2)
     l1.addLast(2)
     print(l1)
-    l1.remove(2)
+    # l1.remove(2)
+    print(l1.__contains__(100))
     # l1.remove_all(2)
     print(l1)
     # print(l2)
