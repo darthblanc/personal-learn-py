@@ -14,14 +14,29 @@ class ListNode(object):
 
         return size
 
-    def addLast(self, other):
+    def slice(self, i, j):
+        node = self
+        sequence_num = i
+        rv = ListNode(0)
+
+        if j > len(self):
+            j = len(self)
+
+        while sequence_num < j:
+            rv.addLast(node.val)
+            node = node.next
+            sequence_num += 1
+
+        return rv.next
+
+    def addLast(self, item):
         node = ListNode(0)
         node.next = self
 
         while node.next is not None:
             node = node.next
             if node.next is None:
-                node.next = ListNode(other)
+                node.next = ListNode(item)
                 break
 
         self.size += 1
@@ -75,6 +90,7 @@ class ListNode(object):
 
 if __name__ == '__main__':
     l1 = ListNode(1, ListNode(2, ListNode(4)))
+    print(l1.slice(0, 1))
     l2 = ListNode(1, ListNode(3, ListNode(4)))
     # l3 = ListNode(0).addLast(1)
     l1.addLast(2)
@@ -97,4 +113,4 @@ if __name__ == '__main__':
     # print(l1)
     # print(l2)
     l4 = ListNode(0)
-    print(len(l4))
+    # print(len(l4))
