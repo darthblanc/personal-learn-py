@@ -1,4 +1,4 @@
-from itertools import combinations, permutations, product
+from itertools import combinations, permutations, product, chain
 
 arr = ["1", "2", "3"]
 
@@ -21,3 +21,12 @@ print(list(product(arr, arr2, arr3, arr4)))
 # if you want to use a set several times on itself use the repeat argument
 print(list(product(arr, repeat=3)))
 
+# if you need to combine more than one series of iterables together use chain
+list1 = [1, 2, 3, 4, 5]
+list2 = [2, 3, 4, 5, 6, 7]
+print(list(chain(list1, list2)))
+
+d1 = {1: 2, 3: 4}
+d2 = {5: 6, 7: 8}
+print(list(chain(d1, d2)))
+# for dictionaries, it returns the keys
