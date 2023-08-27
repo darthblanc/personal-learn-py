@@ -49,6 +49,19 @@ class ListNode(object):
         self.val = item
         self.size += 1
 
+    def count(self, item):
+        rv = ListNode(0)
+        rv.next = self
+        node = rv
+        count = 0
+
+        while node.next is not None:
+            if node.next.val == item:
+                count += 1
+            node = node.next
+
+        return count
+
     def remove(self, entry):
         node = ListNode(0)
         node.next = self
@@ -93,6 +106,7 @@ class ListNode(object):
 
 if __name__ == '__main__':
     l1 = ListNode(1, ListNode(2, ListNode(4)))
+    print(l1.count(1))
     # print(l1.slice(0, 1))
     l2 = ListNode(1, ListNode(3, ListNode(4)))
     # l3 = ListNode(0).addLast(1)
