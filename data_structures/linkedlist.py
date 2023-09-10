@@ -1,5 +1,5 @@
 class ListNode(object):
-    def __init__(self, val, next=None):
+    def __init__(self, val=0, next=None):
         self.val = val
         self.next = next
         self.size = self._find_current_size()
@@ -100,13 +100,22 @@ class ListNode(object):
     def __len__(self):
         return self.size
 
+    def clear(self):
+        self.val = 0
+        self.next = None
+
     def __str__(self):
         return f"{self.val} -> {self.next}"
 
 
 if __name__ == '__main__':
     l1 = ListNode(1, ListNode(2, ListNode(4)))
+    print("__________________")
     print(l1.count(1))
+    print(l1)
+    l1.clear()
+    print(l1)
+    print("______________________")
     # print(l1.slice(0, 1))
     l2 = ListNode(1, ListNode(3, ListNode(4)))
     # l3 = ListNode(0).addLast(1)
