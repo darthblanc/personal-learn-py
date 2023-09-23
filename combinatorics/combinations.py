@@ -17,7 +17,7 @@ def clean(arr):
     return set(filter(lambda k: len(k) == num, tuple(arr)))
 
 
-in_ = [1, 2, 3, 4]
+in_ = [1, 2, 3]
 num = 1
 
 # use a dfs
