@@ -30,3 +30,6 @@ d1 = {1: 2, 3: 4}
 d2 = {5: 6, 7: 8}
 print(list(chain(d1, d2)))
 # for dictionaries, it returns the keys
+
+
+print(len(list(permutations([1, 2, 3, 4]))))
