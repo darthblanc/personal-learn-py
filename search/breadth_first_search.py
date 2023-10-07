@@ -48,6 +48,20 @@ class Graph:
 
         return True, distance // 2, self.write_path(parent[end], end)
 
+    # work on this......
+    def DFS(self, start, end):
+        if not (self.graph.__contains__(end) or self.graph.__contains__(start)):
+            return False
+
+        if start == end:
+            return True
+
+        rv = False
+        for nodes in self.graph[start]:
+            rv = rv or self.DFS(nodes, end)
+
+        return rv
+
     def write_path(self, branch, end):
         path = f"{end} -> "
 
@@ -80,7 +94,7 @@ if __name__ == '__main__':
     my_graph.addEdge("Person", "E")
     # my_graph.addEdge("C", "Person")
 
-    print(my_graph.BFS("E", "C"))
+    print(my_graph.DFS("E", "C"))
 
 # Got nodes from Neelam Yadav on geeksforgeeks
 # build a function to print the bfs path
