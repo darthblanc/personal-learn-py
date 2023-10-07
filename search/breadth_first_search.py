@@ -49,7 +49,11 @@ class Graph:
         return True, distance // 2, self.write_path(parent[end], end)
 
     # work on this......
-    def DFS(self, start, end):
+    def DFS(self, start, end, visited):
+        if start in visited:
+            print(f"Detected Cycle at {start}")
+            return False
+
         if not (self.graph.__contains__(end) or self.graph.__contains__(start)):
             return False
 
@@ -58,7 +62,8 @@ class Graph:
 
         rv = False
         for nodes in self.graph[start]:
-            rv = rv or self.DFS(nodes, end)
+            visited.add(start)
+            rv = rv or self.DFS(nodes, end, visited | set(start))
 
         return rv
 
@@ -89,12 +94,13 @@ if __name__ == '__main__':
     my_graph = Graph()
 
     my_graph.addEdge("E", "Surname")
-    my_graph.addEdge("F", "Firstname")
+    my_graph.addEdge("Surname", "Surname")
     my_graph.addEdge("C", "Initial")
-    my_graph.addEdge("Person", "E")
+    my_graph.addEdge("Person", "F")
     # my_graph.addEdge("C", "Person")
 
-    print(my_graph.DFS("E", "C"))
+    print(my_graph.DFS("E", "Initial", set()))
+    # print(my_graph)
 
 # Got nodes from Neelam Yadav on geeksforgeeks
 # build a function to print the bfs path
