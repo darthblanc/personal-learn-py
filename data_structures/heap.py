@@ -41,7 +41,8 @@ def heapsort(manager):
 
     return rv
 
-arr = []
+
+arr = [20, 5, 7, 9, 2, 1, 23, 1000, -1, -2, 11, 32, 2]
 # arr = [1, 3, 5, 4, 6, 13, 10, 9, 8, 15, 17]
 arr = MyHeap(arr)
 print(arr.heapify())
