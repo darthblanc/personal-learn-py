@@ -1,0 +1,123 @@
+Breadth First Search:
+Graph Search Algorithm
+Used to find the shortest path between two nodes
+Prerequisites:
+    Queues, graphs, hashmaps/dictionaries, control flow
+
+    Algorithm:
+    given a graph
+        A
+       / \     1
+      B   C
+     / \  / \  2
+    D   E F  G
+
+    Say we need to move from A to G,
+
+    Intuition:
+    After eyeballing the graph we know that if we follow the Path A -> C -> G we would find the shortest path from A to G
+    We would expect the length of the path to be 2
+
+    Solution:
+    We fill our queue with A first
+    queue = [A]
+    Let's find all the neighbours of A,
+            A
+           / \
+          B   C
+    That would be B and C as seen above
+    Now pop A from queue and add its neighbours to the queue,
+    queue = [B, C]
+    Now let us check for the neighbours of B,
+            B
+           / \
+          D   E
+    That would be D and E
+    Now pop B from the queue and add its neighbours to the queue,
+    queue = [C, D, E]
+    Now let us check the neighbours of C,
+           C
+          / \
+         F   G
+    That would be F and G
+    Notice we have found G, thus, there is a path from A to G
+    The path length would be 2
+
+
+---------------------------------------------------------------------------------------------
+
+Depth First Search:
+Graph Search Algorithm
+As you guessed to check if two nodes are connected
+But also used in cycle detection
+
+Prerequisites:
+    Stacks, graphs, recursion
+
+    Algorithm:
+    given a graph
+        A
+       / \
+      B   C
+     / \  / \
+    D   E F  G
+
+    Say we need to move from A to F,
+
+    Intuition:
+    After eyeballing the graph we know that if we follow the Path A -> C -> F we would find the shortest path from A to F
+
+    Solution:
+    A is not F,
+    thus, let's find all the neighbours of A,
+            A
+           / \
+          B   C
+    Now we would go into B
+    B is not F
+    Now let us check for the neighbours of B,
+            B
+           / \
+          D   E
+    Now let us check the neighbours of D,
+    D is not F
+            D
+           / \
+    We notice D has no children
+    So we backtrack
+    We would go back to B,
+            B
+           / \
+          D   E
+    We have explored D and couldn't find the F, so we mark it as visited
+            B
+           / \
+      [v] D   E
+    Now we check the neighbours of E,
+    E is not F
+            E
+           / \
+    We notice E has no children
+    So we backtrack
+    We have explored D and couldn't find F, so we mark it as visited
+            B
+           / \
+      [v] D   [v] E
+    Now we have explored all the children of B, so we mark B as visited
+        [v] B
+           / \
+      [v] D   [v] E
+    Now we backtrack to A,
+            A
+           / \
+      [v] B   C
+    We have visited B, thus we turn to C
+    C is not F, so we check its neighbours
+           C
+          / \
+         F   G
+    We check F, this is what we were looking for
+    We have confirmed that there is a path from A to F
+
+
+I hope this was helpful 😁
