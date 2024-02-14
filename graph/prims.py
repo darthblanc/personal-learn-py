@@ -30,4 +30,5 @@ if __name__ == "__main__":
 
         heapq.heappop(graph[itema])
         visited[cur] = min_
-        heapq.heapify(graph[cur])
+
+print(visited)
