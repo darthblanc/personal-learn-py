@@ -1,30 +1,37 @@
-# array -> sorted array
+import unittest
+
+def partition(arr, s, e):
+    if e <= s:
+        return
+    pivot = arr[s]
+    i = s + 1
+    for j in range(i, e+1):
+        if arr[j] < pivot:
+            arr[j], arr[i] = arr[i], arr[j]
+            i += 1
+    
+    arr[i-1], arr[s] = arr[s], arr[i-1]
+    partition(arr, s, i-1)
+    partition(arr, i, e)
+    
 def sort(arr):
-    # if the length of the array is < 2 no sorting is required
-    if len(arr) < 2:
-        return arr
-
-    greater = []  # collects all items > pivot
-    equal = []  # collects all items == pivot
-    lesser = []  # collects all items < pivot
-    pivot = arr[0]
-
-    for item in arr:
-        if item > pivot:
-            greater.append(item)
-        elif item < pivot:
-            lesser.append(item)
-        else:
-            equal.append(item)
-
-    return sort(lesser) + equal + sort(greater)  # create sorted list from already sorted cases
+    partition(arr,0,len(arr)-1)
 
 
-print(sort([1, 2, 3, 4, 5, 6, 7]))
-print(sort([4, 2, 3, 1, 5, 6, 7]))
-print(sort([7, 6, 5, 4, 3, 2, 1]))
+class TestClass(unittest.TestCase):
+    def test_sorted_ascending(self):
+          test_arr = [1, 2, 3, 4, 5, 6, 7]
+          sort(test_arr)
+          self.assertEqual(test_arr, [1, 2, 3, 4, 5, 6, 7])
+    
+    def test_sorted_descending(self):
+        test_arr = [1, 2, 3, 4, 5, 6, 7][::-1]
+        sort(test_arr)
+        self.assertEqual(test_arr, [1, 2, 3, 4, 5, 6, 7])
 
-# quick sort:
-# divide array into 3 sections > pivot | == pivot | < pivot [divide]
-# recursively divide for each section [no need to do so for == section]
-# then combine all the sections [conquer]
+    def test_random(self):
+        test_arr = [4,7,1,3,6,8,5,2]
+        sort(test_arr)
+        self.assertEqual(test_arr, [1, 2, 3, 4, 5, 6, 7,8])
+
+unittest.main()
